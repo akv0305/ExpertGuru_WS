@@ -1,0 +1,68 @@
+---
+const testimonials = [
+  {
+    name: 'Nitya Mateti',
+    text: 'ExpertGuru helped me improve significantly in math and reading. The tutors explained concepts clearly, and the practice tests closely matched the real exam. Overall, the program is well-structured and effective.',
+    rating: 5,
+  },
+  {
+    name: 'Srividya Matta',
+    text: 'This AP prep is really good, and the clear lessons and practice materials really help boost my confidence. The explanations are easy to follow, and it makes AP exams feel like a less daunting milestone.',
+    rating: 5,
+  },
+  {
+    name: 'Sai Akshay Chimakurty',
+    text: 'Expert Guru helped me improve in areas I struggled with in Math. The teachers provide helpful materials and tips to boost ACT scores, and they are very friendly and supportive.',
+    rating: 5,
+  },
+];
+---
+
+<section class="section-padding bg-white">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">What People Say</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
+        Testimonials
+      </h2>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="card border border-gray-100">
+          <!-- Rating Stars -->
+          <div class="flex gap-1 mb-4">
+            {Array.from({ length: testimonial.rating }).map(() => (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          
+          <!-- Quote -->
+          <p class="text-gray-600 mb-6 italic leading-relaxed">&quot;{testimonial.text}&quot;</p>
+          
+          <!-- Author -->
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold">
+              {testimonial.name.charAt(0)}
+            </div>
+            <div>
+              <div class="font-semibold text-gray-900">{testimonial.name}</div>
+              <div class="text-sm text-gray-500">Student</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- View More Button -->
+    <div class="text-center mt-12">
+      <a href="/contact" class="btn-outline">
+        View More Testimonials
+      </a>
+    </div>
+  </div>
+</section>

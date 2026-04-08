@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const services = [
+  {
+    title: 'SAT/ACT Prep',
+    description: 'Comprehensive test preparation with proven strategies and personalized coaching to maximize your scores.',
+    icon: '📝',
+  },
+  {
+    title: 'AP Subjects',
+    description: 'Expert tutoring in AP Chemistry, Physics, Biology, Environmental Science, and Precalculus.',
+    icon: '🎓',
+  },
+  {
+    title: 'IB Subjects',
+    description: 'Specialized support for IB Math, Biology, Chemistry, and Physics programs.',
+    icon: '🌍',
+  },
+  {
+    title: 'College Tutoring',
+    description: 'Advanced academic support for college-level courses and admissions counseling.',
+    icon: '🏛️',
+  },
+  {
+    title: 'Coding Classes',
+    description: 'Learn programming fundamentals and advanced coding skills with expert instructors.',
+    icon: '💻',
+  },
+  {
+    title: 'Essay Writing',
+    description: 'Professional guidance for college application essays and academic writing.',
+    icon: '✍️',
+  },
+];
+---
+
+<Layout title="Services" description="Explore Expert Guru's comprehensive tutoring services including SAT/ACT prep, AP subjects, IB programs, and more.">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary/10 via-white to-secondary/10 py-20">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
+        <p class="text-xl text-gray-600">
+          Comprehensive tutoring services designed to help students excel in academics and beyond.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <div class="card border border-gray-100 hover:border-primary/30 group">
+            <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-primary/20 transition-colors">
+              {service.icon}
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{service.description}</p>
+            <a href="/contact" class="inline-flex items-center text-primary font-medium mt-4 hover:gap-2 transition-all">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Risk Free Section -->
+  <section class="section-padding bg-gradient-to-br from-primary via-primary-800 to-secondary text-white">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-white/80 font-semibold text-sm uppercase tracking-wider">Risk Free Tutoring</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">
+            How Online Tutoring Works
+          </h2>
+          <p class="text-white/90 leading-relaxed mb-6">
+            As soon as you get started, our Education Manager will connect with you to design a personalized online tutoring plan for your child. Based on their academic needs and curriculum, we&apos;ll match your child with a qualified 1-on-1 tutor who fits their schedule and learning style.
+          </p>
+          <p class="text-white/90 leading-relaxed">
+            Tutoring sessions are conducted through our interactive digital whiteboard, combined with a live voice call for real-time support.
+          </p>
+          <a href="/contact" class="inline-flex items-center bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors mt-8">
+            Request a Call Back
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-6">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
+            <div class="text-4xl font-bold mb-2">100%</div>
+            <div class="text-white/80">Money-back Guarantee</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
+            <div class="text-4xl font-bold mb-2">1-on-1</div>
+            <div class="text-white/80">Personalized Sessions</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
+            <div class="text-4xl font-bold mb-2">24/7</div>
+            <div class="text-white/80">Flexible Scheduling</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
+            <div class="text-4xl font-bold mb-2">Top 1%</div>
+            <div class="text-white/80">Expert Tutors</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <WhyChooseUs />
+  <HowItWorks />
+  <ContactForm title="Get Started Today" subtitle="Fill out the form to book your free demo session" />
+</Layout>

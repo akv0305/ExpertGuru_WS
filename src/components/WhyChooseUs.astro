@@ -1,0 +1,78 @@
+---
+const features = [
+  {
+    title: 'Improve Grades',
+    description: 'Students enhance their confidence, refine study strategies, and see measurable academic improvement.',
+    icon: '📈',
+  },
+  {
+    title: 'Same Tutor Every Time',
+    description: 'Our tutors go beyond quick fixes, taking the time to understand and support improve grades.',
+    icon: '👨‍🏫',
+  },
+  {
+    title: 'Teachers with Masters',
+    description: 'The majority of our instructors possess advanced degrees, including master\'s qualifications.',
+    icon: '🎓',
+  },
+  {
+    title: 'Same Textbook',
+    description: 'Our tutors follow the exact textbook used in the student\'s school, ensuring consistent and focused support.',
+    icon: '📖',
+  },
+  {
+    title: 'Managed Tutoring',
+    description: 'Every student has a dedicated Education Manager & tutoring fits their learning style and goals.',
+    icon: '📋',
+  },
+  {
+    title: 'Very Convenient',
+    description: 'Your child can participate from the comfortable environment of your home, saving time, effort, and travel hassles.',
+    icon: '🏠',
+  },
+];
+---
+
+<section class="section-padding bg-white">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-primary font-semibold text-sm uppercase tracking-wider">What we offer</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
+        Why Choose <span class="gradient-text">Expert Guru</span>
+      </h2>
+      <p class="text-gray-600">
+        Expert Guru offers a smarter, more flexible way to learn from anywhere, at any time. With expert instructors, interactive lessons, and personalized support, you can master any subject at your own pace.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature) => (
+        <div class="group card border border-gray-100 hover:border-primary/30">
+          <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:bg-primary/20 transition-colors">
+            {feature.icon}
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-gray-900">{feature.title}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+          <a href="/services" class="inline-flex items-center text-primary font-medium text-sm mt-4 hover:gap-2 transition-all">
+            Read more
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <a href="/services" class="btn-primary">
+        Discover More
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

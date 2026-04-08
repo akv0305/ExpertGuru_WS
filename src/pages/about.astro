@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SmarterChoice from '../components/SmarterChoice.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout title="About Us" description="Learn about Expert Guru - Your pathway to mastery through personalized online tutoring.">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary/10 via-white to-secondary/10 py-20">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">About Us</h1>
+        <p class="text-xl text-gray-600">
+          Learn from Anywhere - Access Quality Education Anytime, No Matter Where You Are.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Are -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Who we are</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">
+            Unlock Your Child&apos;s Potential with 
+            <span class="gradient-text">Expert Guru</span>
+          </h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            At Expert Guru, we go beyond traditional tutoring by delivering personalized academic support and professional tutoring services that empower students to excel in school, build confidence, and achieve outstanding results.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Our proven methods, expert tutors, and customized learning plans create a clear path to long-term academic success.
+          </p>
+        </div>
+        
+        <div class="relative">
+          <div class="bg-gradient-to-br from-primary to-secondary rounded-3xl p-8 text-white">
+            <h3 class="text-2xl font-bold mb-6">Personalized Tutoring That Works</h3>
+            <p class="text-white/90 mb-6">
+              Every student is unique—and so is our approach. We design one-on-one tutoring programs based on individual strengths, challenges, and academic goals to ensure faster progress and lasting improvement.
+            </p>
+            <div class="flex items-center gap-4 bg-white/20 rounded-xl p-4">
+              <div class="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold">Learning Experts by Your Side</div>
+                <div class="text-sm text-white/80">Top 1% tutors from prestigious universities</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SmarterChoice />
+  <HowItWorks />
+  <ContactForm title="Achieve More, Get Free online counselling now." subtitle="Please fill the details Below" />
+</Layout>

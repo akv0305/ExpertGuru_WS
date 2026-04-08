@@ -1,0 +1,44 @@
+---
+const items = [
+  {
+    title: 'Our Vision',
+    description: 'To make quality education accessible to everyone, everywhere, through innovative online tutoring.',
+    icon: '🎯',
+  },
+  {
+    title: 'Our Mission',
+    description: 'To provide high-quality, personalized online tutoring that empowers learners to reach their full potential.',
+    icon: '🚀',
+  },
+  {
+    title: 'Our Motto',
+    description: 'Learn Anywhere, Succeed Everywhere. We believe that with the right guidance, learning knows no boundaries.',
+    icon: '💡',
+  },
+];
+---
+
+<section class="section-padding bg-gradient-to-br from-primary via-primary-800 to-secondary text-white">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Master Any Subject with Expert Help
+      </h2>
+      <p class="text-white/80">
+        Deep and confident understanding of any topic with the guidance of experienced professionals. Instead of struggling alone, you learn from experts who can simplify complex ideas, provide clear explanations, and share proven techniques for faster learning.
+      </p>
+    </div>
+
+    <!-- Vision, Mission, Motto -->
+    <div class="grid md:grid-cols-3 gap-8">
+      {items.map((item) => (
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-white/20 transition-colors">
+          <div class="text-5xl mb-4">{item.icon}</div>
+          <h3 class="text-xl font-bold mb-3">{item.title}</h3>
+          <p class="text-white/80">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

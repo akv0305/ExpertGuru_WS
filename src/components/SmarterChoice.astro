@@ -1,0 +1,59 @@
+---
+const features = [
+  {
+    title: 'Expert Tutors',
+    description: 'Learn from experienced and qualified educators.',
+    icon: '👨‍🏫',
+  },
+  {
+    title: 'Personalized Lessons',
+    description: 'Tailored to match your learning needs.',
+    icon: '📝',
+  },
+  {
+    title: 'Flexible Learning',
+    description: 'Study anytime, anywhere, at your own pace.',
+    icon: '⏰',
+  },
+  {
+    title: 'Easy Explanations',
+    description: 'Complex topics made simple and clear.',
+    icon: '💡',
+  },
+];
+---
+
+<section class="section-padding bg-white">
+  <div class="container-custom">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Content -->
+      <div>
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
+          The Smarter Choice for Online Learning in 
+          <span class="gradient-text">Expert Guru</span>
+        </h2>
+        <p class="text-gray-600 mb-8">
+          Our flexible online platform allows you to learn anytime, anywhere, at your own pace. With personalized guidance, interactive lessons, and real-world examples, we focus on practical understanding and long-term success.
+        </p>
+        <a href="/about" class="btn-primary">
+          Explore More
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Right Content - Features Grid -->
+      <div class="grid grid-cols-2 gap-6">
+        {features.map((feature) => (
+          <div class="bg-gray-50 rounded-2xl p-6 hover:bg-primary/5 transition-colors">
+            <div class="text-4xl mb-4">{feature.icon}</div>
+            <h3 class="font-semibold text-gray-900 mb-2">{feature.title}</h3>
+            <p class="text-gray-600 text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

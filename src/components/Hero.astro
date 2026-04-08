@@ -1,0 +1,82 @@
+---
+const categories = [
+  { name: 'Elementary School', icon: '📚' },
+  { name: 'Middle & High School', icon: '🎓' },
+  { name: 'Coding School', icon: '💻' },
+  { name: 'Test Prep', icon: '📝' },
+  { name: 'College Tutoring', icon: '🏛️' },
+];
+
+const features = [
+  'Homework Help',
+  'Flexible Scheduling',
+  'Managed Tutoring',
+  '1-on-1 Tutoring',
+];
+---
+
+<section class="relative bg-gradient-to-br from-primary/5 via-white to-secondary/5 overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-30">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container-custom relative z-10 py-16 lg:py-24">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Content -->
+      <div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Online Tutoring for
+          <span class="gradient-text"> Better Grades</span>
+        </h1>
+        
+        <!-- Feature Pills -->
+        <div class="flex flex-wrap gap-3 mb-8">
+          {features.map((feature) => (
+            <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 shadow-sm border border-gray-100">
+              {feature}
+            </span>
+          ))}
+        </div>
+
+        <p class="text-lg text-gray-600 mb-8 max-w-xl">
+          Expert Guru offers a smarter, more flexible way to learn from anywhere, at any time. With expert instructors, interactive lessons, and personalized support.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="/contact" class="btn-primary">
+            Book Free Demo
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/about" class="btn-outline">
+            Learn More
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Content - Categories -->
+      <div class="relative">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {categories.map((category, index) => (
+            <div 
+              class={`card text-center hover:scale-105 transition-transform cursor-pointer ${index === 2 ? 'sm:col-span-1' : ''}`}
+            >
+              <div class="text-4xl mb-3">{category.icon}</div>
+              <h3 class="font-semibold text-gray-800 text-sm">{category.name}</h3>
+            </div>
+          ))}
+        </div>
+        
+        <!-- Decorative Element -->
+        <div class="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
+          <svg viewBox="0 0 200 200" class="w-full h-full opacity-10">
+            <path fill="#7C3AED" d="M45.7,-78.2C58.9,-70.5,69.3,-57.8,77.2,-43.5C85.1,-29.2,90.5,-13.4,89.7,1.8C88.9,17,81.9,31.5,72.6,44.2C63.3,56.9,51.7,67.8,38.2,75.3C24.7,82.8,9.3,86.9,-5.4,85.2C-20.1,83.5,-34.1,76,-46.8,66.3C-59.5,56.6,-70.9,44.7,-78.2,30.5C-85.5,16.3,-88.7,-0.2,-85.6,-15.2C-82.5,-30.2,-73.1,-43.7,-61.1,-52.2C-49.1,-60.7,-34.5,-64.2,-20.8,-71.4C-7.1,-78.6,5.7,-89.5,19.9,-90.5C34.1,-91.5,49.7,-82.6,45.7,-78.2Z" transform="translate(100 100)" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
