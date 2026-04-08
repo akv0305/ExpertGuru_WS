@@ -1,17 +1,14 @@
-// astro.config.mjs
+// @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://expertguru.net',
-  integrations: [tailwind(), sitemap()],
+  integrations: [sitemap()],
   output: 'static',
-  server: {
-    port: 3000,
-    host: true,
-  },
   vite: {
+    plugins: [tailwindcss()],
     server: {
       watch: {
         usePolling: true,
