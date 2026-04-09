@@ -1,12 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { siteConfig } from '../data/config';
-import WhyChooseUs from '../components/WhyChooseUs.astro';
 import VisionMission from '../components/VisionMission.astro';
-import Testimonials from '../components/Testimonials.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import FAQ from '../components/FAQ.astro';
-import ContactForm from '../components/ContactForm.astro';
 
 const milestones = [
   { year: 'Founded', title: 'Expert Guru Launched', description: 'Started with a mission to make quality tutoring accessible to every student, everywhere.' },
@@ -18,17 +13,17 @@ const milestones = [
 const team = [
   {
     title: 'Expert Tutors',
-    description: 'Our tutors hold Master\'s degrees or higher from prestigious universities. They don\'t just know the subject — they know how to teach it.',
+    description: "Our tutors hold Master's degrees or higher from prestigious universities. They don't just know the subject — they know how to teach it.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>`,
   },
   {
     title: 'Education Managers',
-    description: 'Every student gets a dedicated coordinator who tracks progress, handles scheduling, and keeps parents informed — so you never have to chase updates.',
+    description: "Every student gets a dedicated coordinator who tracks progress, handles scheduling, and keeps parents informed — so you never have to chase updates.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>`,
   },
   {
     title: 'Support Team',
-    description: 'Responsive, friendly, and always available. From enrollment questions to technical help, our support team has your back.',
+    description: "Responsive, friendly, and always available. From enrollment questions to technical help, our support team has your back.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>`,
   },
 ];
@@ -45,7 +40,7 @@ const team = [
       <div class="text-center max-w-3xl mx-auto">
         <span class="text-primary font-semibold text-sm uppercase tracking-wider">About Expert Guru</span>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-gray-900">
-          Unlock Your Child's <span class="gradient-text">Full Potential</span>
+          Built by Educators, <span class="gradient-text">for Families</span>
         </h1>
         <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
           We go beyond traditional tutoring — delivering personalized academic support that empowers students to excel, build confidence, and achieve outstanding results.
@@ -58,7 +53,6 @@ const team = [
   <section class="section-padding bg-white">
     <div class="container-custom">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <!-- Left copy -->
         <div>
           <span class="text-primary font-semibold text-sm uppercase tracking-wider">Who We Are</span>
           <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-6">
@@ -71,11 +65,10 @@ const team = [
             Unlike other tutoring platforms, we don't just assign a random tutor and hope for the best. Every detail — from tutor matching to curriculum alignment to progress tracking — is managed by a dedicated Education Manager who knows your child by name.
           </p>
 
-          <!-- Key differentiators -->
           <div class="space-y-4">
             {[
               { label: 'Same tutor every session', desc: 'Consistency builds trust and faster results' },
-              { label: 'Curriculum-aligned teaching', desc: 'We follow your child\'s exact school textbook' },
+              { label: 'Curriculum-aligned teaching', desc: "We follow your child's exact school textbook" },
               { label: 'Monthly progress reports', desc: 'Know exactly how your child is improving' },
             ].map((item) => (
               <div class="flex gap-4">
@@ -120,7 +113,6 @@ const team = [
             </div>
           </div>
 
-          <!-- Floating card -->
           <div class="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl border border-gray-100 p-5 max-w-[260px]">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
@@ -191,12 +183,29 @@ const team = [
   <!-- Vision / Mission -->
   <VisionMission />
 
-  <!-- Testimonials -->
-  <Testimonials />
+  <!-- Final CTA -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Ready to Join <span class="gradient-text">500+ Families?</span>
+        </h2>
+        <p class="text-gray-600 text-lg mb-8">
+          Book a free demo class and experience the Expert Guru difference for yourself. No commitment, no pressure.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href={siteConfig.app.bookDemo} class="group inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
+            Book Free Demo Class
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/contact" class="inline-flex items-center gap-2 border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- How It Works -->
-  <HowItWorks />
-
-  <!-- CTA -->
-  <ContactForm title="Ready to Get Started?" subtitle="Book a free demo class and see the Expert Guru difference for yourself." />
 </Layout>

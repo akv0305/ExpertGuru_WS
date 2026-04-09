@@ -1,0 +1,392 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/config';
+
+const pricingTiers = [
+  {
+    name: 'K-12 & Test Prep',
+    price: 18,
+    priceINR: '1,640',
+    unit: '/hr',
+    description: 'Core school subjects, SAT, ACT, PSAT, IB, and coding classes',
+    popular: false,
+    subjects: [
+      'Algebra', 'Biology', 'Geometry', 'Chemistry', 'Physics', 'Calculus',
+      'Statistics', 'Trigonometry', 'Earth Science', 'Grammar', 'Reading Comprehension',
+      'Life Science', 'Integrated Math 1/2/3',
+      'SAT Prep', 'ACT Prep', 'PSAT Prep',
+      'IB Biology', 'IB Chemistry', 'IB Physics', 'IB Math',
+      'Coding & Computer Science',
+    ],
+    cta: 'Book Free Demo',
+    color: 'secondary',
+  },
+  {
+    name: 'AP Subjects',
+    price: 20,
+    priceINR: '1,820',
+    unit: '/hr',
+    description: 'Advanced Placement exam preparation with expert AP tutors',
+    popular: true,
+    subjects: [
+      'AP Calculus AB', 'AP Calculus BC', 'AP Precalculus', 'AP Statistics',
+      'AP Computer Science',
+      'AP Biology', 'AP Chemistry', 'AP Environmental Science',
+      'AP Physics 1 & 2', 'AP Physics C Mechanics', 'AP Physics C E&M',
+      'AP English Language & Composition', 'AP English Literature & Composition',
+    ],
+    cta: 'Book Free Demo',
+    color: 'primary',
+  },
+  {
+    name: 'College STEM',
+    price: 25,
+    priceINR: '2,552',
+    unit: '/hr',
+    description: 'University-level subjects with advanced tutors',
+    popular: false,
+    subjects: [
+      'College English', 'College Chemistry', 'College Biology',
+      'College Statistics', 'College Physics', 'College Genetics', 'College Math',
+    ],
+    cta: 'Book Free Demo',
+    color: 'secondary',
+  },
+];
+
+const included = [
+  {
+    title: '1-on-1 Live Sessions',
+    description: 'Every class is a private session between your child and their dedicated tutor — no group classes.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`,
+  },
+  {
+    title: 'Same Tutor Every Session',
+    description: 'No more re-explaining. Your child builds a relationship with the same expert tutor throughout.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>`,
+  },
+  {
+    title: 'Dedicated Education Manager',
+    description: 'A coordinator assigned to your child who tracks progress, manages scheduling, and keeps you informed.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>`,
+  },
+  {
+    title: 'Interactive Whiteboard',
+    description: 'Sessions use a shared digital whiteboard with voice call for real-time, hands-on learning.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+  },
+  {
+    title: 'Curriculum-Aligned Teaching',
+    description: "Tutors follow your child's exact school textbook and curriculum — no confusion from mismatched content.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>`,
+  },
+  {
+    title: 'Monthly Progress Reports',
+    description: 'Detailed reports on academic growth plus parent-tutor conferences every 30-45 days.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
+  },
+];
+
+const pricingFaqs = [
+  {
+    question: 'Is there a free trial?',
+    answer: 'Yes! Every subject starts with a completely free demo class. You can experience our teaching style, meet the tutor, and decide if it\'s the right fit — all at no cost and no obligation.',
+  },
+  {
+    question: 'Are there any hidden fees?',
+    answer: 'None. The hourly rate you see is what you pay. There are no registration fees, platform fees, or material charges. You pay only for the tutoring hours you use.',
+  },
+  {
+    question: 'Do you offer discounts for multiple subjects or siblings?',
+    answer: 'Yes, we can create custom plans for families with multiple students or students taking multiple subjects. Contact us to discuss the best arrangement for your family.',
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer: 'We accept bank transfers, credit cards, debit cards, and UPI. Payment details are shared after your free demo class once you decide to continue.',
+  },
+  {
+    question: 'Can I cancel or reschedule a session?',
+    answer: 'Yes. You can reschedule or cancel a session with advance notice at no charge. Your Education Manager handles all scheduling to make the process easy.',
+  },
+  {
+    question: 'Why are your rates so affordable compared to other tutoring services?',
+    answer: 'Our tutors are based internationally, which allows us to offer top 1% quality teaching at significantly lower rates than US-based tutoring services, without compromising on quality or credentials.',
+  },
+];
+---
+
+<Layout title="Pricing — Simple, Transparent Tutoring Rates" description="Expert Guru pricing: $18/hr for K-12 & test prep, $20/hr for AP subjects, $25/hr for college STEM. No hidden fees. Free demo class included.">
+
+  <!-- Hero -->
+  <section class="relative bg-linear-to-b from-primary/5 to-white py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[120px]"></div>
+    </div>
+    <div class="container-custom relative z-10">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Pricing</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-gray-900">
+          Simple, <span class="gradient-text">Transparent</span> Pricing
+        </h1>
+        <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          No hidden fees. No long-term contracts. Pay only for the hours you use — and every subject starts with a free demo class.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="pb-16 lg:pb-24 bg-white -mt-4">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        {pricingTiers.map((tier) => (
+          <div class={`relative bg-white border-2 rounded-3xl p-8 transition-all hover:shadow-xl ${tier.popular ? 'border-primary shadow-lg shadow-primary/10 scale-[1.02] lg:scale-105' : 'border-gray-200 hover:border-primary/30'}`}>
+            {/* Popular badge */}
+            {tier.popular && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span class="inline-flex items-center gap-1 bg-primary text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-lg shadow-primary/25">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  Most Popular
+                </span>
+              </div>
+            )}
+
+            {/* Tier name */}
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{tier.name}</h3>
+            <p class="text-gray-500 text-sm mb-6">{tier.description}</p>
+
+            {/* Price */}
+            <div class="flex items-baseline gap-1 mb-1">
+              <span class="text-5xl font-bold text-gray-900">${tier.price}</span>
+              <span class="text-gray-500 font-medium">{tier.unit}</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-8">₹{tier.priceINR} per hour</p>
+
+            {/* CTA */}
+            <a
+              href={siteConfig.app.bookDemo}
+              class={`flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-semibold transition-all text-sm ${
+                tier.popular
+                  ? 'bg-primary hover:bg-primary-600 text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30'
+                  : 'bg-gray-100 hover:bg-primary hover:text-white text-gray-800'
+              }`}
+            >
+              {tier.cta}
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+
+            {/* Divider */}
+            <div class="border-t border-gray-100 my-6"></div>
+
+            {/* Subjects list */}
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Subjects included</p>
+            <ul class="space-y-2">
+              {tier.subjects.map((subject) => (
+                <li class="flex items-start gap-2 text-sm text-gray-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" class={`h-4 w-4 shrink-0 mt-0.5 ${tier.popular ? 'text-primary' : 'text-green-500'}`} viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  {subject}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {/* Free trial callout */}
+      <div class="max-w-5xl mx-auto mt-10">
+        <div class="bg-green-50 border border-green-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">Every subject starts with a free demo class</p>
+              <p class="text-sm text-gray-600">Try before you commit — no credit card required, no obligation.</p>
+            </div>
+          </div>
+          <a href={siteConfig.app.bookDemo} class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all shrink-0 shadow-sm">
+            Claim Free Demo
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">What's Included</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          Every Session Comes With <span class="gradient-text">Everything You Need</span>
+        </h2>
+        <p class="text-gray-600 text-lg">
+          No matter which tier you choose, every student gets the full Expert Guru experience.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {included.map((item) => (
+          <div class="bg-white border border-gray-200 rounded-2xl p-7 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-5">
+              <Fragment set:html={item.icon} />
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Compares -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Value Comparison</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          Premium Quality, <span class="gradient-text">Unbeatable Value</span>
+        </h2>
+        <p class="text-gray-600 text-lg">
+          See how Expert Guru compares to other tutoring options in the US.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th class="text-left py-4 px-4 text-sm font-bold text-gray-900">Feature</th>
+              <th class="py-4 px-4 text-sm font-bold text-gray-400">In-Person Tutors</th>
+              <th class="py-4 px-4 text-sm font-bold text-gray-400">Other Online</th>
+              <th class="py-4 px-4 text-sm font-bold text-primary bg-primary/5 rounded-t-xl">Expert Guru</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr class="border-b border-gray-100">
+              <td class="py-4 px-4 font-medium text-gray-700">Hourly Rate</td>
+              <td class="py-4 px-4 text-center text-gray-500">$40 – $90</td>
+              <td class="py-4 px-4 text-center text-gray-500">$30 – $80</td>
+              <td class="py-4 px-4 text-center font-bold text-primary bg-primary/5">$18 – $25</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-4 px-4 font-medium text-gray-700">Same Tutor Every Time</td>
+              <td class="py-4 px-4 text-center text-gray-400">Sometimes</td>
+              <td class="py-4 px-4 text-center text-gray-400">Rarely</td>
+              <td class="py-4 px-4 text-center bg-primary/5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              </td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-4 px-4 font-medium text-gray-700">Dedicated Education Manager</td>
+              <td class="py-4 px-4 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400 mx-auto" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+              </td>
+              <td class="py-4 px-4 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400 mx-auto" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+              </td>
+              <td class="py-4 px-4 text-center bg-primary/5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              </td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-4 px-4 font-medium text-gray-700">Progress Reports</td>
+              <td class="py-4 px-4 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400 mx-auto" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+              </td>
+              <td class="py-4 px-4 text-center text-gray-400">Some</td>
+              <td class="py-4 px-4 text-center bg-primary/5">
+                <span class="text-green-600 font-medium text-xs">Monthly</span>
+              </td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-4 px-4 font-medium text-gray-700">Free Demo Class</td>
+              <td class="py-4 px-4 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400 mx-auto" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+              </td>
+              <td class="py-4 px-4 text-center text-gray-400">Sometimes</td>
+              <td class="py-4 px-4 text-center bg-primary/5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 font-medium text-gray-700">Tutor Qualifications</td>
+              <td class="py-4 px-4 text-center text-gray-400">Varies</td>
+              <td class="py-4 px-4 text-center text-gray-400">Varies</td>
+              <td class="py-4 px-4 text-center bg-primary/5 rounded-b-xl">
+                <span class="text-green-600 font-medium text-xs">Master's+</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing FAQ -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Pricing FAQ</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+            Questions About <span class="gradient-text">Pricing?</span>
+          </h2>
+        </div>
+
+        <div class="space-y-3">
+          {pricingFaqs.map((faq, index) => (
+            <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden open:border-primary/20 open:shadow-sm transition-all" open={index === 0}>
+              <summary class="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-primary transition-colors">
+                <span class="pr-4 text-sm lg:text-base">{faq.question}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 shrink-0 group-open:rotate-180 group-open:text-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Still Have Questions? <span class="gradient-text">Let's Talk</span>
+        </h2>
+        <p class="text-gray-600 text-lg mb-8">
+          Not sure which plan is right for your child? Book a free demo and our team will help you find the perfect fit.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href={siteConfig.app.bookDemo} class="group inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
+            Book Free Demo Class
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/contact" class="inline-flex items-center gap-2 border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

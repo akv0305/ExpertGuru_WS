@@ -1,77 +1,92 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import FAQ from '../components/FAQ.astro';
-import HowItWorks from '../components/HowItWorks.astro';
+import { siteConfig } from '../data/config';
 import ContactForm from '../components/ContactForm.astro';
+
+const contactFaqs = [
+  {
+    question: 'How quickly will I hear back after submitting the form?',
+    answer: 'Our team typically responds within 24 hours on business days. For urgent inquiries, email us directly at info@expertguru.net.',
+  },
+  {
+    question: 'Can I try a class before committing?',
+    answer: 'Absolutely! We offer a free demo class so you can experience our tutoring approach firsthand. There\'s no obligation — it\'s a chance to see the quality of our teaching and find the right fit for your child.',
+  },
+  {
+    question: 'What subjects do you offer tutoring for?',
+    answer: 'We cover 50+ subjects including K-12 core subjects, AP, IB, SAT/ACT/PSAT test prep, coding, and college-level courses. Visit our Pricing page or use the "Find Tutoring" menu to explore all offerings.',
+  },
+  {
+    question: 'How much does tutoring cost?',
+    answer: 'Rates start at $18/hr for K-12 and test prep subjects, $20/hr for AP subjects, and $25/hr for college STEM. Visit our pricing page for full details. Every subject starts with a free demo class.',
+  },
+];
 ---
 
-<Layout title="Contact Us" description="Get in touch with Expert Guru. We're here to help with all your tutoring inquiries.">
+<Layout title="Contact Us" description="Get in touch with Expert Guru. Book a free demo class, ask questions, or reach out to our team.">
+
   <!-- Hero Section -->
-  <section class="bg-linear-to-br from-primary/10 via-white to-secondary/10 py-20">
-    <div class="container-custom">
+  <section class="relative bg-linear-to-b from-primary/5 to-white py-20 lg:py-24 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="container-custom relative z-10">
       <div class="text-center max-w-3xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-        <p class="text-xl text-gray-600">
-          Need answers? Our team is here to help with all your inquiries.
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Contact Us</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-gray-900">
+          We're Here to <span class="gradient-text">Help</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          Have questions about our tutoring programs? Want to book a free demo? Our team is ready to assist you.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Contact Info Section -->
-  <section class="section-padding bg-white">
+  <!-- Contact Info Cards -->
+  <section class="pb-8 bg-white">
     <div class="container-custom">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
-          Have Questions? Contact Our Support Team
-        </h2>
-        <p class="text-gray-600">
-          Having trouble or questions about your service? Our support team is here to help you. Reach out to us through our contact options, and we&apos;ll resolve your issues promptly and efficiently.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto -mt-8">
         <!-- Address -->
-        <div class="card text-center border border-gray-100">
-          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        <div class="bg-white border border-gray-200 rounded-2xl p-7 text-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
+          <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Head Office</h3>
-          <p class="text-gray-600 text-sm">
-            Plot No 2/P and 3/P, Venkusa Estates, Kowkoor, Secunderabad, Telangana-500010, India
-          </p>
+          <h3 class="font-bold text-gray-900 mb-2">Head Office</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">{siteConfig.address}</p>
         </div>
 
         <!-- Email -->
-        <div class="card text-center border border-gray-100">
-          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        <div class="bg-white border border-gray-200 rounded-2xl p-7 text-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
+          <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Email Support</h3>
-          <a href="mailto:info@expertguru.net" class="text-primary hover:underline">
-            info@expertguru.net
+          <h3 class="font-bold text-gray-900 mb-2">Email Us</h3>
+          <a href={`mailto:${siteConfig.email}`} class="text-primary hover:text-primary-700 font-medium transition-colors">
+            {siteConfig.email}
           </a>
+          <p class="text-gray-500 text-xs mt-1">We respond within 24 hours</p>
         </div>
 
         <!-- Social -->
-        <div class="card text-center border border-gray-100">
-          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+        <div class="bg-white border border-gray-200 rounded-2xl p-7 text-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
+          <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
             </svg>
           </div>
-          <h3 class="font-semibold text-gray-900 mb-2">Connect With Us</h3>
-          <div class="flex justify-center gap-4">
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="text-gray-500 hover:text-primary" aria-label="Facebook">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z"/></svg>
+          <h3 class="font-bold text-gray-900 mb-3">Follow Us</h3>
+          <div class="flex justify-center gap-3">
+            <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-all" aria-label="Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2.16c3.2,0,3.58.01,4.85.07,3.25.15,4.77,1.69,4.92,4.92.06,1.27.07,1.65.07,4.85s-.01,3.58-.07,4.85c-.15,3.23-1.66,4.77-4.92,4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38,3.92,3.9,2.38,7.15,2.23,8.42,2.17,8.8,2.16,12,2.16ZM12,0C8.74,0,8.33.01,7.05.07c-4.27.2-6.78,2.71-6.98,6.98C.01,8.33,0,8.74,0,12s.01,3.67.07,4.95c.2,4.27,2.71,6.78,6.98,6.98,1.28.06,1.69.07,4.95.07s3.67-.01,4.95-.07c4.27-.2,6.78-2.71,6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.27-2.71-6.78-6.98-6.98C15.67.01,15.26,0,12,0Zm0,5.84A6.16,6.16,0,1,0,18.16,12,6.16,6.16,0,0,0,12,5.84ZM12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16ZM18.41,4.15a1.44,1.44,0,1,0,1.44,1.44A1.44,1.44,0,0,0,18.41,4.15Z"/></svg>
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="text-gray-500 hover:text-primary" aria-label="Instagram">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2.16c3.2,0,3.58.01,4.85.07,3.25.15,4.77,1.69,4.92,4.92.06,1.27.07,1.65.07,4.85s-.01,3.58-.07,4.85c-.15,3.23-1.66,4.77-4.92,4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38,3.92,3.9,2.38,7.15,2.23,8.42,2.17,8.8,2.16,12,2.16ZM12,0C8.74,0,8.33.01,7.05.07c-4.27.2-6.78,2.71-6.98,6.98C.01,8.33,0,8.74,0,12s.01,3.67.07,4.95c.2,4.27,2.71,6.78,6.98,6.98,1.28.06,1.69.07,4.95.07s3.67-.01,4.95-.07c4.27-.2,6.78-2.71,6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.27-2.71-6.78-6.98-6.98C15.67.01,15.26,0,12,0Zm0,5.84A6.16,6.16,0,1,0,18.16,12,6.16,6.16,0,0,0,12,5.84ZM12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16ZM18.41,4.15a1.44,1.44,0,1,0,1.44,1.44A1.44,1.44,0,0,0,18.41,4.15Z"/></svg>
+            <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-all" aria-label="Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z"/></svg>
             </a>
           </div>
         </div>
@@ -79,11 +94,48 @@ import ContactForm from '../components/ContactForm.astro';
     </div>
   </section>
 
-  <ContactForm title="Get in Touch" subtitle="Fill out the form below and we'll get back to you as soon as possible" />
-  
-  <HowItWorks />
-  
-  <FAQ />
+  <!-- Contact Form -->
+  <ContactForm title="Get in Touch" subtitle="Fill out the form below and we'll get back to you within 24 hours" />
 
-  <ContactForm title="Achieve More, Get Free online counselling now." subtitle="Please fill the details Below" />
+  <!-- Quick FAQ -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Quick Answers</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+            Common <span class="gradient-text">Questions</span>
+          </h2>
+        </div>
+
+        <div class="space-y-3">
+          {contactFaqs.map((faq, index) => (
+            <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden open:border-primary/20 open:shadow-sm transition-all" open={index === 0}>
+              <summary class="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-gray-900 hover:text-primary transition-colors">
+                <span class="pr-4 text-sm lg:text-base">{faq.question}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 shrink-0 group-open:rotate-180 group-open:text-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <!-- Alternative CTA -->
+        <div class="text-center mt-10 p-6 bg-primary/5 border border-primary/10 rounded-2xl">
+          <p class="text-gray-700 font-medium mb-3">Want to skip the form and get started right away?</p>
+          <a href={siteConfig.app.bookDemo} class="inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold transition-all shadow-lg shadow-primary/25">
+            Book Your Free Demo Directly
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
