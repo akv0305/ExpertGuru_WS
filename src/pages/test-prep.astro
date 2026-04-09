@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/config';
+import ContactForm from '../components/ContactForm.astro';
+
+const tests = [
+  {
+    id: 'sat-overview',
+    title: 'SAT Prep',
+    href: '/sat',
+    description: 'Comprehensive SAT preparation covering Math and Evidence-Based Reading & Writing. Our tutors teach content mastery and proven test-taking strategies.',
+    sections: ['SAT Complete', 'SAT Math', 'SAT Reading & Writing'],
+  },
+  {
+    id: 'act-overview',
+    title: 'ACT Prep',
+    href: '/act',
+    description: 'Full ACT preparation across all four sections. Our approach combines content review with timed practice and score-boosting strategies.',
+    sections: ['ACT Complete', 'ACT English', 'ACT Math', 'ACT Science'],
+  },
+  {
+    id: 'psat-overview',
+    title: 'PSAT / NMSQT Prep',
+    href: '/psat',
+    description: 'Prepare for the PSAT and National Merit Scholarship Qualifying Test with targeted practice that also builds a foundation for SAT success.',
+    sections: ['PSAT Evidence-Based Reading & Writing', 'PSAT Math', 'PSAT/NMSQT Complete'],
+  },
+];
+---
+
+<Layout title="Test Prep Tutoring — SAT, ACT & PSAT" description="Expert 1-on-1 test prep tutoring for SAT, ACT, and PSAT. Proven strategies, real practice, measurable score improvements. $18/hr. Free demo class.">
+
+  <!-- Hero -->
+  <section class="relative bg-linear-to-b from-primary/5 to-white py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="container-custom relative z-10">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold text-sm uppercase tracking-wider px-4 py-1.5 rounded-full mb-6">
+          SAT · ACT · PSAT
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-gray-900">
+          Boost Your Test Scores with <span class="gradient-text">Expert Prep</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
+          Our test prep tutors combine deep content knowledge with proven strategies. Whether it's the SAT, ACT, or PSAT, we help students achieve their target scores.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href={siteConfig.app.bookDemo} class="group inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-primary/25">
+            Book Free Test Prep Demo
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+          <a href="/pricing" class="inline-flex items-center gap-2 border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all">
+            View Pricing
+          </a>
+        </div>
+        <p class="text-sm text-gray-500 mt-4"><strong class="text-gray-700">$18/hr</strong> (₹1,640) · Free demo class · Same tutor every session</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test Cards -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Test Prep Programs</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          Choose Your <span class="gradient-text">Test</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {tests.map((test) => (
+          <div id={test.id} class="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all scroll-mt-24">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{test.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-5">{test.description}</p>
+            <div class="space-y-2 mb-6">
+              {test.sections.map((section) => (
+                <div class="flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-500 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                  <span class="text-sm text-gray-700">{section}</span>
+                </div>
+              ))}
+            </div>
+            <a href={test.href} class="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:text-primary-700 transition-colors">
+              View full program
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Our <span class="gradient-text">Test Prep Approach</span>
+          </h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { title: 'Diagnostic Assessment', desc: 'We start with a practice test to identify strengths and weaknesses.' },
+            { title: 'Custom Study Plan', desc: 'A targeted plan that focuses time where it matters most for score improvement.' },
+            { title: 'Content + Strategy', desc: 'We teach both the material and the time management and elimination strategies.' },
+            { title: 'Practice & Review', desc: 'Regular timed practice tests with detailed review sessions to track progress.' },
+          ].map((item) => (
+            <div class="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-primary/30 hover:shadow-lg transition-all">
+              <h3 class="font-bold text-gray-900 mb-2">{item.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <ContactForm title="Book a Free Test Prep Demo" subtitle="See how our approach leads to real score improvements — no commitment required." />
+
+</Layout>

@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/config';
+import ContactForm from '../components/ContactForm.astro';
+
+const subjects = [
+  {
+    id: 'ib-biology',
+    title: 'IB Biology',
+    description: 'Cover the entire IB Biology syllabus — from molecular biology to ecology — at both SL and HL levels with expert guidance.',
+    level: 'SL & HL',
+    topics: ['Cell biology', 'Molecular biology', 'Genetics', 'Ecology', 'Human physiology', 'Plant biology (HL)'],
+  },
+  {
+    id: 'ib-chemistry',
+    title: 'IB Chemistry',
+    description: 'Master stoichiometry, bonding, energetics, kinetics, and organic chemistry for both SL and HL IB Chemistry exams.',
+    level: 'SL & HL',
+    topics: ['Stoichiometry', 'Atomic structure', 'Bonding', 'Energetics', 'Kinetics & equilibrium', 'Organic chemistry (HL)'],
+  },
+  {
+    id: 'ib-physics',
+    title: 'IB Physics',
+    description: 'From mechanics to quantum physics, our tutors make IB Physics concepts clear and help you tackle both Paper 1 and Paper 2 with confidence.',
+    level: 'SL & HL',
+    topics: ['Mechanics', 'Thermal physics', 'Waves', 'Electricity & magnetism', 'Atomic & nuclear', 'Fields (HL)'],
+  },
+  {
+    id: 'ib-math',
+    title: 'IB Math (AA & AI)',
+    description: 'Whether you\'re in Analysis & Approaches or Applications & Interpretation, our tutors provide targeted support for both SL and HL pathways.',
+    level: 'SL & HL · AA & AI',
+    topics: ['Number & algebra', 'Functions', 'Geometry & trigonometry', 'Statistics & probability', 'Calculus'],
+  },
+];
+---
+
+<Layout title="IB Tutoring — Biology, Chemistry, Physics & Math (SL & HL)" description="Expert 1-on-1 IB tutoring for Biology, Chemistry, Physics, and Math (AA & AI). SL and HL levels. $18/hr. Free demo class.">
+
+  <!-- Hero -->
+  <section class="relative bg-linear-to-b from-primary/5 to-white py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="container-custom relative z-10">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold text-sm uppercase tracking-wider px-4 py-1.5 rounded-full mb-6">
+          IB Program · SL & HL
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-gray-900">
+          Master the IB Curriculum with <span class="gradient-text">Expert Tutoring</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
+          The IB program is rigorous — our tutors know the syllabus inside and out. Get 1-on-1 support for Biology, Chemistry, Physics, and Math at both Standard and Higher Level.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href={siteConfig.app.bookDemo} class="group inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
+            Book Free IB Demo
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+          <a href="/pricing" class="inline-flex items-center gap-2 border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all">
+            View Pricing
+          </a>
+        </div>
+        <p class="text-sm text-gray-500 mt-4"><strong class="text-gray-700">$18/hr</strong> (₹1,640) · Free demo class · Same tutor every session</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IB Subjects Grid -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">IB Subjects</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          IB Subjects <span class="gradient-text">We Offer</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {subjects.map((subject) => (
+          <div id={subject.id} class="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all scroll-mt-24">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-secondary/10 text-secondary-700 text-xs font-bold px-2.5 py-1 rounded-full">IB</span>
+              <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-full">{subject.level}</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{subject.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">{subject.description}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {subject.topics.map((topic) => (
+                <span class="text-xs bg-secondary/5 text-secondary-700 px-2.5 py-1 rounded-full font-medium">{topic}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why IB with Expert Guru -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Why Choose Expert Guru for <span class="gradient-text">IB Tutoring</span>
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            { title: 'IB Syllabus Experts', desc: 'Our tutors are trained on the latest IB syllabus and assessment criteria — they teach what the examiners expect.' },
+            { title: 'IA & EE Support', desc: 'Get guidance on Internal Assessments, lab reports, and Extended Essays that earn top marks.' },
+            { title: 'SL & HL Coverage', desc: 'Whether Standard Level or Higher Level, we adjust the depth and pace to match your exact course requirements.' },
+          ].map((item) => (
+            <div class="bg-white border border-gray-200 rounded-2xl p-8 text-center hover:border-primary/30 hover:shadow-lg transition-all">
+              <div class="w-12 h-12 mx-auto mb-4 bg-secondary/10 rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <ContactForm title="Book a Free IB Tutoring Demo" subtitle="See how our IB specialists help students master the curriculum — no commitment required." />
+
+</Layout>

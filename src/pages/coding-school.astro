@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/config';
+import ContactForm from '../components/ContactForm.astro';
+
+const programs = [
+  {
+    id: 'scratch',
+    title: 'Scratch Programming',
+    age: 'Ages 6–10',
+    description: 'Introduce your child to coding with Scratch — a visual, block-based language that makes programming fun and intuitive for young learners.',
+    topics: ['Block-based coding', 'Animation & stories', 'Simple games', 'Logical thinking', 'Creative projects'],
+  },
+  {
+    id: 'python',
+    title: 'Python Programming',
+    age: 'Ages 10+',
+    description: 'Python is the world\'s most popular beginner-friendly language. Students learn variables, loops, functions, and build real projects from day one.',
+    topics: ['Variables & data types', 'Loops & conditionals', 'Functions', 'Lists & dictionaries', 'Mini projects & games'],
+  },
+  {
+    id: 'java',
+    title: 'Java Programming',
+    age: 'Ages 13+',
+    description: 'Prepare for AP Computer Science or learn enterprise-grade programming with Java — covering OOP, data structures, and algorithms.',
+    topics: ['Object-oriented programming', 'Data structures', 'Algorithms', 'AP CS A preparation', 'Real-world applications'],
+  },
+  {
+    id: 'web-development',
+    title: 'Web Development',
+    age: 'Ages 12+',
+    description: 'Learn to build real websites from scratch using HTML, CSS, and JavaScript. Students create portfolio-ready projects during the course.',
+    topics: ['HTML & CSS fundamentals', 'JavaScript basics', 'Responsive design', 'Interactive web pages', 'Portfolio projects'],
+  },
+];
+---
+
+<Layout title="Coding School — Python, Java, Scratch & Web Development" description="1-on-1 online coding tutoring for kids and teens. Learn Scratch, Python, Java, and web development with expert instructors. $18/hr. Free demo.">
+
+  <!-- Hero -->
+  <section class="relative bg-linear-to-b from-primary/5 to-white py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-secondary/5 rounded-full blur-[80px]"></div>
+    </div>
+    <div class="container-custom relative z-10">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold text-sm uppercase tracking-wider px-4 py-1.5 rounded-full mb-6">
+          Coding & Computer Science
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-gray-900">
+          Learn to Code with <span class="gradient-text">Expert Instructors</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
+          From Scratch for beginners to Java and web development for advanced students — our 1-on-1 coding tutors make programming accessible, engaging, and practical.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href={siteConfig.app.bookDemo} class="group inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-primary/25">
+            Book Free Coding Demo
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+          <a href="/pricing" class="inline-flex items-center gap-2 border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all">
+            View Pricing
+          </a>
+        </div>
+        <p class="text-sm text-gray-500 mt-4"><strong class="text-gray-700">$18/hr</strong> (₹1,640) · Free demo class · All ages welcome</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coding Programs -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Programs</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          Coding Programs for <span class="gradient-text">Every Level</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {programs.map((program) => (
+          <div id={program.id} class="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all scroll-mt-24">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-primary/10 text-primary text-xs font-bold px-2.5 py-1 rounded-full">{program.age}</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{program.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">{program.description}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {program.topics.map((topic) => (
+                <span class="text-xs bg-primary/5 text-primary-700 px-2.5 py-1 rounded-full font-medium">{topic}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Code with Expert Guru -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Why Learn Coding with <span class="gradient-text">Expert Guru</span>
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            { title: '1-on-1 Instruction', desc: "No group classes — your child gets their tutor's full attention for faster learning and more hands-on practice." },
+            { title: 'Project-Based Learning', desc: 'Students build real projects — games, websites, apps — not just follow tutorials. They leave with a portfolio.' },
+            { title: 'From Beginner to Advanced', desc: 'Whether starting with Scratch or preparing for AP Computer Science, we meet students exactly where they are.' },
+          ].map((item) => (
+            <div class="bg-white border border-gray-200 rounded-2xl p-8 text-center hover:border-primary/30 hover:shadow-lg transition-all">
+              <div class="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <ContactForm title="Book a Free Coding Demo" subtitle="See how our coding tutors make programming fun and practical — no commitment required." />
+
+</Layout>

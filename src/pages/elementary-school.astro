@@ -1,0 +1,164 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/config';
+import ContactForm from '../components/ContactForm.astro';
+
+const subjects = [
+  {
+    id: 'math',
+    title: 'Math Online Tutoring',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007v-.008zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" /></svg>`,
+    description: 'Build a rock-solid math foundation with interactive lessons covering addition, subtraction, multiplication, division, fractions, and early problem-solving skills.',
+    topics: ['Number sense & counting', 'Addition & subtraction', 'Multiplication & division', 'Fractions & decimals', 'Measurement & geometry basics', 'Word problems'],
+  },
+  {
+    id: 'science',
+    title: 'Science',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" /></svg>`,
+    description: 'Spark curiosity about the natural world through engaging experiments and discovery-based science lessons covering life science, earth science, and physical science.',
+    topics: ['Living things & habitats', 'Plants & animals', 'Weather & seasons', 'Earth & space basics', 'Matter & energy', 'Simple machines'],
+  },
+  {
+    id: 'grammar-writing',
+    title: 'Grammar and Writing',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>`,
+    description: 'Help your child develop clear, confident writing skills and proper grammar from an early age. Our tutors make grammar rules approachable and fun.',
+    topics: ['Sentence structure', 'Parts of speech', 'Capitalization & punctuation', 'Paragraph writing', 'Creative writing', 'Spelling strategies'],
+  },
+  {
+    id: 'reading-comprehension',
+    title: 'Reading Comprehension',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>`,
+    description: "Strengthen your child's ability to read, understand, and analyze texts. From phonics to fluency, we build confident readers one session at a time.",
+    topics: ['Phonics & decoding', 'Vocabulary building', 'Main idea & details', 'Sequencing & story elements', 'Making inferences', 'Reading fluency'],
+  },
+];
+
+const whyUs = [
+  { title: 'Patient, Caring Tutors', desc: 'Our elementary tutors specialize in working with young learners — making every session fun, engaging, and productive.' },
+  { title: 'Aligned to Your Curriculum', desc: "We follow your child's exact school textbook and curriculum so tutoring directly supports their classroom learning." },
+  { title: 'Build Confidence Early', desc: 'A strong foundation in elementary years sets the stage for academic success in middle school, high school, and beyond.' },
+];
+---
+
+<Layout title="Elementary School Tutoring (K-5) — Math, Science, Reading & Writing" description="Expert 1-on-1 online tutoring for elementary school students (K-5). Build strong foundations in math, science, grammar, and reading comprehension. Free demo class.">
+
+  <!-- Hero -->
+  <section class="relative bg-linear-to-b from-primary/5 to-white py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-secondary/5 rounded-full blur-[80px]"></div>
+    </div>
+    <div class="container-custom relative z-10">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold text-sm uppercase tracking-wider px-4 py-1.5 rounded-full mb-6">
+          Grades K–5
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-gray-900">
+          Build a Strong Foundation with <span class="gradient-text">Elementary Tutoring</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
+          Personalized 1-on-1 online tutoring that makes learning fun. Our patient tutors help young learners master math, reading, science, and writing — at their own pace.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href={siteConfig.app.bookDemo} class="group inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
+            Book Free Demo Class
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+          <a href="/pricing" class="inline-flex items-center gap-2 border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all">
+            View Pricing
+          </a>
+        </div>
+        <p class="text-sm text-gray-500 mt-4">Starting at <strong class="text-gray-700">$18/hr</strong> · Free demo class · No commitment</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subjects Grid -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Subjects We Offer</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          Elementary School <span class="gradient-text">Subjects</span>
+        </h2>
+        <p class="text-gray-600 text-lg">Every subject is taught 1-on-1 by a dedicated tutor who understands how young learners think and grow.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {subjects.map((subject) => (
+          <div id={subject.id} class="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all scroll-mt-24">
+            <div class="flex items-start gap-5">
+              <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary shrink-0">
+                <Fragment set:html={subject.icon} />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">{subject.title}</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">{subject.description}</p>
+                <div class="flex flex-wrap gap-2">
+                  {subject.topics.map((topic) => (
+                    <span class="text-xs bg-primary/5 text-primary-700 px-3 py-1 rounded-full font-medium">{topic}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Expert Guru for Elementary -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Why Expert Guru</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          Why Parents Choose Us for <span class="gradient-text">Elementary Tutoring</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {whyUs.map((item) => (
+          <div class="bg-white border border-gray-200 rounded-2xl p-8 text-center hover:border-primary/30 hover:shadow-lg transition-all">
+            <div class="w-12 h-12 mx-auto mb-4 bg-green-100 rounded-xl flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works (Mini) -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Getting Started</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          3 Simple Steps to <span class="gradient-text">Get Started</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {[
+          { step: '01', title: 'Book a Free Demo', desc: "Fill out our form or call us. We'll schedule a free session at a time that works for you." },
+          { step: '02', title: 'Get Matched', desc: "We pair your child with a patient, qualified tutor based on subject, grade level, and learning style." },
+          { step: '03', title: 'Start Learning', desc: "Begin 1-on-1 sessions from home. Your Education Manager tracks progress and keeps you informed." },
+        ].map((item) => (
+          <div class="text-center">
+            <div class="w-14 h-14 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+              <span class="text-primary font-bold text-lg">{item.step}</span>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <ContactForm title="Book a Free Elementary Tutoring Demo" subtitle="See how our tutors make learning fun and engaging for young learners — no commitment required." />
+
+</Layout>

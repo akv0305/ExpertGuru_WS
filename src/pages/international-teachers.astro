@@ -1,0 +1,267 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/config';
+
+const teachers = [
+  {
+    name: 'Nivas Mummadi',
+    subject: 'Physics & AP Physics',
+    credential: 'PhD Student, IISER Kolkata',
+    bio: 'A dedicated PhD physics student at IISER Kolkata, Nivas enjoys research, fitness, creative hobbies, and tutoring.',
+  },
+  {
+    name: 'Jayati Sahu',
+    subject: 'Chemistry',
+    credential: 'BS-MS, IISER Kolkata',
+    bio: 'IISER Kolkata BS-MS student passionate about chemistry, teaching, and sustainable polymer research.',
+  },
+  {
+    name: 'Padmaja Mukkara',
+    subject: 'Computer Science & Coding',
+    credential: 'CS Educator',
+    bio: 'A passionate Computer Science educator dedicated to AI, Machine Learning, and programming languages like C, C++, Java, and Python.',
+  },
+  {
+    name: 'Jagadeesh Tumula',
+    subject: 'Mathematics & Physics',
+    credential: 'MSc Physics, MSc Mathematics, B.Ed.',
+    bio: 'A seasoned Mathematics and Physics educator with 21+ years of experience, known for strengthening fundamentals and guiding students worldwide.',
+  },
+  {
+    name: 'Monish Majumdar',
+    subject: 'Biology & AP Biology',
+    credential: 'IISER Kolkata',
+    bio: 'An IISER Kolkata biology student and accomplished AP Biology instructor and science communicator.',
+  },
+  {
+    name: 'Deepa Suryanarayan',
+    subject: 'SAT Prep',
+    credential: '22 Years Experience',
+    bio: 'An experienced educator with 22 years in various industries and 6+ years teaching the SAT.',
+  },
+  {
+    name: 'Kalyani Srinivas',
+    subject: 'AP Biology',
+    credential: 'MSc, B.Ed., Gold Medalist',
+    bio: 'MSc and B.Ed. graduate with 12+ years of teaching experience and a Gold Medalist in Education, dedicated to inspiring student success.',
+  },
+  {
+    name: 'Vikrant Dharwal',
+    subject: 'Mathematics',
+    credential: 'MS in Mathematics',
+    bio: 'A passionate Math educator and EdTech expert with 5+ years of experience guiding students from school to university level.',
+  },
+  {
+    name: 'Uma Maheshwara Rao Ganji',
+    subject: 'AP Calculus & Algebra',
+    credential: 'M.Sc., B.Ed., 20 Years Experience',
+    bio: 'An experienced math educator with 20 years of experience teaching AP Calculus, Algebra, and Olympiad math.',
+  },
+  {
+    name: 'Robinson Paulmony',
+    subject: 'English',
+    credential: 'M.A., M.Phil., TESOL',
+    bio: 'English Lecturer with 20 years of international experience in teaching, research, and linguistic editing.',
+  },
+  {
+    name: 'Geetthika',
+    subject: 'IB, AP & CBSE',
+    credential: '17 Years Experience',
+    bio: 'An experienced IB, AP, and CBSE tutor with 17 years of experience, empowering students to excel through self-problem-solving.',
+  },
+  {
+    name: 'Harsh Dhawan',
+    subject: 'Math & Science (Curriculum)',
+    credential: 'Curriculum Specialist, 17 Years',
+    bio: 'A dynamic educator with 17 years of experience in curriculum development, specializing in Math, Science, and diverse international curricula.',
+  },
+  {
+    name: 'Ronita Biswas',
+    subject: 'AP Biology',
+    credential: 'CSIR-NET AIR 63, Arihant Author',
+    bio: 'Biotechnology postgraduate and CSIR-NET AIR 63 rank holder with research experience, currently an AP Biology educator passionate about inspiring curiosity in Life Sciences.',
+  },
+  {
+    name: 'Sayantan',
+    subject: 'Biology',
+    credential: 'NET AIR-10, Gold Medalist',
+    bio: 'A Biotechnology postgraduate, NET AIR-10 rank holder, and National Science Olympiad Gold Medalist — a passionate Biology educator, researcher, and science author.',
+  },
+  {
+    name: 'Rohan Kumar',
+    subject: 'AP Computer Science',
+    credential: 'McMaster University & IISER Kolkata',
+    bio: 'Physics graduate student at McMaster University and IISER Kolkata alumnus with 1.5+ years of experience teaching AP Computer Science Principles.',
+  },
+  {
+    name: 'P. Manisha',
+    subject: 'Chemistry & AP Chemistry',
+    credential: 'PhD Scholar, 5+ Years Experience',
+    bio: 'A PhD scholar and chemistry master with 5+ years of tutoring experience, helping students master complex concepts effectively.',
+  },
+];
+
+const benefits = [
+  {
+    title: 'Flexible Schedule',
+    desc: 'Set your own hours and teach from anywhere. Our platform supports tutors across all time zones.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+  },
+  {
+    title: 'Competitive Pay',
+    desc: 'Earn competitive hourly rates with transparent payout schedules and no hidden deductions.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+  },
+  {
+    title: 'Dedicated Support',
+    desc: 'Our Education Managers handle scheduling, parent communication, and admin — so you can focus on teaching.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>`,
+  },
+  {
+    title: 'Global Students',
+    desc: 'Teach students from the US, India, and around the world — all from the comfort of your home.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>`,
+  },
+];
+---
+
+<Layout title="Meet Our Tutors — Become a Tutor at Expert Guru" description="Meet Expert Guru's international tutors. Top 1% educators from prestigious universities. Interested in teaching? Apply to become a tutor.">
+
+  <!-- Hero -->
+  <section class="relative bg-linear-to-b from-primary/5 to-white py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="container-custom relative z-10">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Tutors</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-gray-900">
+          Meet Our <span class="gradient-text">Expert Tutors</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
+          Our tutors are in the top 1% — holding advanced degrees from prestigious universities, with years of teaching experience. They don't just know the subject; they know how to teach it.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#apply" class="group inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-primary/25">
+            Apply to Become a Tutor
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+          <a href="/about" class="inline-flex items-center gap-2 border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all">
+            About Expert Guru
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tutor Stats -->
+  <section class="bg-white pb-4">
+    <div class="container-custom">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto -mt-6">
+        {[
+          { value: '100+', label: 'Expert Tutors' },
+          { value: 'Top 1%', label: 'Vetted Educators' },
+          { value: '50+', label: 'Subjects Taught' },
+          { value: '10,000+', label: 'Sessions Completed' },
+        ].map((stat) => (
+          <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-center">
+            <div class="text-2xl md:text-3xl font-bold text-primary">{stat.value}</div>
+            <div class="text-sm text-gray-600 mt-1">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tutors Grid -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Team</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          International <span class="gradient-text">Teaching Team</span>
+        </h2>
+        <p class="text-gray-600 text-lg">Every tutor goes through a rigorous screening process. Only the top 1% make it to Expert Guru.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {teachers.map((teacher) => (
+          <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all text-center">
+            <div class="w-16 h-16 mx-auto mb-4 bg-linear-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-xl">
+              {teacher.name.charAt(0)}
+            </div>
+            <h3 class="font-bold text-gray-900 mb-1">{teacher.name}</h3>
+            <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-2">{teacher.subject}</span>
+            <p class="text-xs text-gray-500 font-medium mb-3">{teacher.credential}</p>
+            <p class="text-gray-600 text-sm leading-relaxed">{teacher.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Become a Tutor -->
+  <section id="apply" class="section-padding bg-gray-50 scroll-mt-24">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Join Our Team</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+            Become an <span class="gradient-text">Expert Guru Tutor</span>
+          </h2>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            Are you a passionate educator with expertise in K-12, AP, IB, test prep, or college-level subjects? We'd love to hear from you.
+          </p>
+        </div>
+
+        <!-- Benefits Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+          {benefits.map((benefit) => (
+            <div class="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-primary/30 hover:shadow-lg transition-all">
+              <div class="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                <Fragment set:html={benefit.icon} />
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">{benefit.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{benefit.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Requirements & Apply -->
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white border border-gray-200 rounded-2xl p-8">
+            <h3 class="text-xl font-bold text-gray-900 mb-6">What We Look For</h3>
+            <div class="space-y-4">
+              {[
+                "Master's degree or higher in your subject area",
+                '2+ years of teaching or tutoring experience',
+                'Strong communication skills in English',
+                'Passion for helping students succeed',
+                'Reliable internet connection and quiet workspace',
+                'Familiarity with US curriculum (AP, SAT, ACT, Common Core) preferred',
+              ].map((req) => (
+                <div class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                  <span class="text-sm text-gray-700">{req}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="bg-linear-to-br from-primary to-primary-800 rounded-2xl p-8 text-white">
+            <h3 class="text-xl font-bold mb-4">Ready to Apply?</h3>
+            <p class="text-white/80 mb-6 leading-relaxed">
+              Send us your resume and a brief introduction explaining your teaching experience and subjects of expertise. Our team will review your application and get back to you within 5 business days.
+            </p>
+            <a href={`mailto:${siteConfig.email}?subject=Tutor Application — Expert Guru&body=Hi Expert Guru Team,%0D%0A%0D%0AI am interested in joining as a tutor. Here are my details:%0D%0A%0D%0AName:%0D%0ASubjects I can teach:%0D%0AYears of experience:%0D%0AHighest qualification:%0D%0A%0D%0APlease find my resume attached.%0D%0A%0D%0AThank you!`} class="inline-flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-all shadow-lg">
+              Send Your Application
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+            </a>
+            <p class="text-white/60 text-sm mt-4">Email: {siteConfig.email}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
