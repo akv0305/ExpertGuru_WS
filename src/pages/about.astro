@@ -1,56 +1,136 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SmarterChoice from '../components/SmarterChoice.astro';
+import { siteConfig } from '../data/config';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import VisionMission from '../components/VisionMission.astro';
+import Testimonials from '../components/Testimonials.astro';
 import HowItWorks from '../components/HowItWorks.astro';
+import FAQ from '../components/FAQ.astro';
 import ContactForm from '../components/ContactForm.astro';
+
+const milestones = [
+  { year: 'Founded', title: 'Expert Guru Launched', description: 'Started with a mission to make quality tutoring accessible to every student, everywhere.' },
+  { year: '100+', title: 'Tutors Onboarded', description: 'Built a network of top 1% tutors from prestigious universities across the globe.' },
+  { year: '500+', title: 'Families Served', description: 'Earned the trust of families across the US, India, and beyond with measurable results.' },
+  { year: '50+', title: 'Subjects Covered', description: 'Expanded from math tutoring to a full catalog of K–12, AP, IB, test prep, and coding.' },
+];
+
+const team = [
+  {
+    title: 'Expert Tutors',
+    description: 'Our tutors hold Master\'s degrees or higher from prestigious universities. They don\'t just know the subject — they know how to teach it.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>`,
+  },
+  {
+    title: 'Education Managers',
+    description: 'Every student gets a dedicated coordinator who tracks progress, handles scheduling, and keeps parents informed — so you never have to chase updates.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>`,
+  },
+  {
+    title: 'Support Team',
+    description: 'Responsive, friendly, and always available. From enrollment questions to technical help, our support team has your back.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>`,
+  },
+];
 ---
 
-<Layout title="About Us" description="Learn about Expert Guru - Your pathway to mastery through personalized online tutoring.">
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-primary/10 via-white to-secondary/10 py-20">
-    <div class="container-custom">
+<Layout title="About Us" description="Learn about Expert Guru — personalized 1-on-1 online tutoring with top 1% tutors for K-12, AP, IB, SAT, ACT & coding.">
+
+  <!-- Hero -->
+  <section class="relative bg-linear-to-b from-primary/5 to-white py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="container-custom relative z-10">
       <div class="text-center max-w-3xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">About Us</h1>
-        <p class="text-xl text-gray-600">
-          Learn from Anywhere - Access Quality Education Anytime, No Matter Where You Are.
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">About Expert Guru</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mt-3 mb-6 text-gray-900">
+          Unlock Your Child's <span class="gradient-text">Full Potential</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          We go beyond traditional tutoring — delivering personalized academic support that empowers students to excel, build confidence, and achieve outstanding results.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Who We Are -->
+  <!-- Who We Are — Story section -->
   <section class="section-padding bg-white">
     <div class="container-custom">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Left copy -->
         <div>
-          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Who we are</span>
-          <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">
-            Unlock Your Child&apos;s Potential with 
-            <span class="gradient-text">Expert Guru</span>
+          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Who We Are</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-6">
+            A Team That Cares About <span class="gradient-text">Your Child's Success</span>
           </h2>
           <p class="text-gray-600 mb-6 leading-relaxed">
-            At Expert Guru, we go beyond traditional tutoring by delivering personalized academic support and professional tutoring services that empower students to excel in school, build confidence, and achieve outstanding results.
+            Expert Guru was founded with a simple belief: every student deserves access to exceptional teaching, regardless of where they live. We connect students with top 1% tutors who bring patience, expertise, and proven methods to every session.
           </p>
-          <p class="text-gray-600 leading-relaxed">
-            Our proven methods, expert tutors, and customized learning plans create a clear path to long-term academic success.
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            Unlike other tutoring platforms, we don't just assign a random tutor and hope for the best. Every detail — from tutor matching to curriculum alignment to progress tracking — is managed by a dedicated Education Manager who knows your child by name.
           </p>
+
+          <!-- Key differentiators -->
+          <div class="space-y-4">
+            {[
+              { label: 'Same tutor every session', desc: 'Consistency builds trust and faster results' },
+              { label: 'Curriculum-aligned teaching', desc: 'We follow your child\'s exact school textbook' },
+              { label: 'Monthly progress reports', desc: 'Know exactly how your child is improving' },
+            ].map((item) => (
+              <div class="flex gap-4">
+                <div class="shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900">{item.label}</div>
+                  <div class="text-sm text-gray-500">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        
+
+        <!-- Right — Stats card -->
         <div class="relative">
-          <div class="bg-gradient-to-br from-primary to-secondary rounded-3xl p-8 text-white">
-            <h3 class="text-2xl font-bold mb-6">Personalized Tutoring That Works</h3>
-            <p class="text-white/90 mb-6">
-              Every student is unique—and so is our approach. We design one-on-one tutoring programs based on individual strengths, challenges, and academic goals to ensure faster progress and lasting improvement.
+          <div class="bg-linear-to-br from-primary to-primary-800 rounded-3xl p-8 lg:p-10 text-white">
+            <h3 class="text-2xl font-bold mb-2">Personalized Tutoring That Works</h3>
+            <p class="text-white/70 mb-8">
+              Every student is unique — and so is our approach. We design 1-on-1 programs based on individual strengths, challenges, and goals.
             </p>
-            <div class="flex items-center gap-4 bg-white/20 rounded-xl p-4">
-              <div class="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            <div class="grid grid-cols-2 gap-6">
+              <div class="text-center">
+                <div class="text-3xl lg:text-4xl font-bold">1%</div>
+                <div class="text-white/60 text-sm mt-1">Top Tutors</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl lg:text-4xl font-bold">4.9/5</div>
+                <div class="text-white/60 text-sm mt-1">Parent Rating</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl lg:text-4xl font-bold">500+</div>
+                <div class="text-white/60 text-sm mt-1">Families</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl lg:text-4xl font-bold">1:1</div>
+                <div class="text-white/60 text-sm mt-1">Personalized</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating card -->
+          <div class="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl border border-gray-100 p-5 max-w-[260px]">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                 </svg>
               </div>
               <div>
-                <div class="font-semibold">Learning Experts by Your Side</div>
-                <div class="text-sm text-white/80">Top 1% tutors from prestigious universities</div>
+                <div class="font-semibold text-gray-900 text-sm">Free Demo Class</div>
+                <div class="text-xs text-gray-500">Try before you commit</div>
               </div>
             </div>
           </div>
@@ -59,7 +139,64 @@ import ContactForm from '../components/ContactForm.astro';
     </div>
   </section>
 
-  <SmarterChoice />
+  <!-- Our Journey / Milestones -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Journey</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          From a Simple Idea to <span class="gradient-text">500+ Happy Families</span>
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {milestones.map((m) => (
+          <div class="bg-white border border-gray-200 rounded-2xl p-7 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all text-center">
+            <div class="text-3xl font-bold text-primary mb-2">{m.year}</div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">{m.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{m.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The People Behind Expert Guru -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Our Team</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">
+          The People Behind <span class="gradient-text">Expert Guru</span>
+        </h2>
+        <p class="text-gray-600 text-lg">
+          Behind every great student result is a dedicated team of educators, coordinators, and support staff working together.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {team.map((member) => (
+          <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 text-center hover:border-primary/30 hover:shadow-lg transition-all">
+            <div class="w-16 h-16 mx-auto mb-5 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
+              <Fragment set:html={member.icon} />
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{member.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{member.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision / Mission -->
+  <VisionMission />
+
+  <!-- Testimonials -->
+  <Testimonials />
+
+  <!-- How It Works -->
   <HowItWorks />
-  <ContactForm title="Achieve More, Get Free online counselling now." subtitle="Please fill the details Below" />
+
+  <!-- CTA -->
+  <ContactForm title="Ready to Get Started?" subtitle="Book a free demo class and see the Expert Guru difference for yourself." />
 </Layout>

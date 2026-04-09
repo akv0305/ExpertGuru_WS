@@ -2,41 +2,51 @@
 const items = [
   {
     title: 'Our Vision',
-    description: 'To make quality education accessible to everyone, everywhere, through innovative online tutoring.',
-    icon: '🎯',
+    description: 'To make quality education accessible to every student, everywhere — regardless of location or background.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
   },
   {
     title: 'Our Mission',
-    description: 'To provide high-quality, personalized online tutoring that empowers learners to reach their full potential.',
-    icon: '🚀',
+    description: 'To provide personalized, high-quality online tutoring that empowers learners to reach their full potential.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" /></svg>`,
   },
   {
     title: 'Our Motto',
-    description: 'Learn Anywhere, Succeed Everywhere. We believe that with the right guidance, learning knows no boundaries.',
-    icon: '💡',
+    description: 'Learn Anywhere, Succeed Everywhere. With the right guidance, learning knows no boundaries.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>`,
   },
 ];
 ---
 
-<section class="section-padding bg-gradient-to-br from-primary via-primary-800 to-secondary text-white">
-  <div class="container-custom">
+<section class="relative section-padding overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-linear-to-br from-gray-900 via-gray-900 to-primary-900"></div>
+  <div class="absolute inset-0">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[100px]"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-secondary/15 rounded-full blur-[80px]"></div>
+  </div>
+
+  <div class="container-custom relative z-10">
     <!-- Section Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        Master Any Subject with Expert Help
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <span class="text-primary-300 font-semibold text-sm uppercase tracking-wider">Our Purpose</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4 text-white">
+        Driven by a Mission to <span class="bg-linear-to-r from-primary-300 to-secondary-300 bg-clip-text text-transparent">Transform Education</span>
       </h2>
-      <p class="text-white/80">
-        Deep and confident understanding of any topic with the guidance of experienced professionals. Instead of struggling alone, you learn from experts who can simplify complex ideas, provide clear explanations, and share proven techniques for faster learning.
+      <p class="text-white/60 text-lg">
+        Every decision we make is guided by a simple belief — every student deserves access to exceptional teaching.
       </p>
     </div>
 
-    <!-- Vision, Mission, Motto -->
-    <div class="grid md:grid-cols-3 gap-8">
+    <!-- Cards -->
+    <div class="grid md:grid-cols-3 gap-6">
       {items.map((item) => (
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-white/20 transition-colors">
-          <div class="text-5xl mb-4">{item.icon}</div>
-          <h3 class="text-xl font-bold mb-3">{item.title}</h3>
-          <p class="text-white/80">{item.description}</p>
+        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-all hover:-translate-y-1">
+          <div class="w-16 h-16 mx-auto mb-5 bg-white/10 rounded-2xl flex items-center justify-center text-primary-300">
+            <Fragment set:html={item.icon} />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">{item.title}</h3>
+          <p class="text-white/60 leading-relaxed">{item.description}</p>
         </div>
       ))}
     </div>

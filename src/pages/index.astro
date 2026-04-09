@@ -1,25 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import AboutSection from '../components/AboutSection.astro';
+import Hero from '../components/HeroA.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import Programs from '../components/Programs.astro';
 import WhyChooseUs from '../components/WhyChooseUs.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import VisionMission from '../components/VisionMission.astro';
 import Testimonials from '../components/Testimonials.astro';
-import SmarterChoice from '../components/SmarterChoice.astro';
-import WhatsNew from '../components/WhatsNew.astro';
+import FAQ from '../components/FAQ.astro';
 import ContactForm from '../components/ContactForm.astro';
 ---
 
-<Layout title="Home">
+<Layout title="Online Tutoring for Better Grades | K-12, AP, IB & Test Prep">
   <Hero />
-  <AboutSection />
+  <TrustStrip />
+  <Programs />
   <WhyChooseUs />
-  <VisionMission />
-  <ContactForm title="Book your Free Demo session" subtitle="Book a Free Demo" />
-  <WhatsNew />
-  <SmarterChoice />
-  <Testimonials />
   <HowItWorks />
-  <ContactForm title="Achieve More, Get Free online counselling now." subtitle="Please fill the details Below" />
+  <VisionMission />
+  <Testimonials />
+  <FAQ />
+  <ContactForm title="Book Your Free Demo Class" subtitle="See the difference in just one session — no commitment, no cost." />
 </Layout>
