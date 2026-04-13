@@ -3,17 +3,18 @@ export const siteConfig = {
     tagline: 'Your Pathway to Mastery',
     email: 'info@expertguru.net',
     phone: '',
-    address: 'Plot No 2/P and 3/P, Venkusa Estates, Kowkoor, Secunderabad, Telangana-500010, India',
+    address: '#302, 3rd Floor, Meridian Plaza, Ameerpet, Hyderabad - 500016, Telangana',
+    //'Plot No 2/P and 3/P, Venkusa Estates, Kowkoor, Secunderabad, Telangana-500010, India',
   
     // TMS Application URLs
     // Currently pointing to test instance. 
     // Production: switch to app.expertguru.net (or chosen subdomain)
     app: {
-      baseUrl: 'https://dgtutor.netlify.app',
-      login: 'https://dgtutor.netlify.app/login',
-      register: 'https://dgtutor.netlify.app/register',
-      bookDemo: 'https://dgtutor.netlify.app/register',
-      parentPortal: 'https://dgtutor.netlify.app/login',
+      baseUrl: '#contact-form', //'https://dgtutor.netlify.app',
+      login: '#contact-form', //'https://dgtutor.netlify.app/login',
+      register: '#contact-form', //'https://dgtutor.netlify.app/register',
+      bookDemo: '#contact-form', //'https://dgtutor.netlify.app/register',
+      parentPortal: '#contact-form', //'https://dgtutor.netlify.app/login',
     },
   
     social: {
