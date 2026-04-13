@@ -18,10 +18,10 @@ export const siteConfig = {
     },
   
     social: {
-      instagram: 'https://www.instagram.com/expertguru_/',
-      facebook: 'https://www.facebook.com/',
-      youtube: '',
-      linkedin: '',
+      instagram: 'https://www.instagram.com/expertguru.tutoring/',
+      facebook: 'https://www.facebook.com/expertguru.tutoring/',
+      youtube: 'https://www.youtube.com/@expertguru.tutoring',
+      linkedin: 'https://www.linkedin.com/company/expertguru',
     },
   };
   
