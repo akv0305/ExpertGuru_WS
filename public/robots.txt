@@ -1,0 +1,17 @@
+# Expert Guru - https://expertguru.net
+User-agent: *
+Allow: /
+Disallow: /products/
+Disallow: /*.html$
+
+# Block known AI training crawlers (optional — remove if you want AI visibility)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+Sitemap: https://expertguru.net/sitemap-index.xml
