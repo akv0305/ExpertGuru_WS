@@ -4,7 +4,21 @@ import { siteConfig } from '../data/config';
 
 const pricingTiers = [
   {
-    name: 'K-12 & Test Prep',
+    name: 'Elementary (K-6)',
+    price: 15,
+    priceINR: '1,365',
+    unit: '/hr',
+    description: 'Core subjects for young learners — math, reading, science, and writing',
+    popular: false,
+    subjects: [
+      'Math', 'Science', 'Grammar & Writing', 'Reading Comprehension',
+      'Phonics', 'Spelling', 'Vocabulary Building',
+    ],
+    cta: 'Book Free Demo',
+    color: 'secondary',
+  },
+  {
+    name: '7-12 & Test Prep',
     price: 18,
     priceINR: '1,640',
     unit: '/hr',
@@ -138,7 +152,7 @@ const pricingFaqs = [
   <!-- Pricing Cards -->
   <section class="pb-16 lg:pb-24 bg-white -mt-4">
     <div class="container-custom">
-      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 max-w-6xl mx-auto">
         {pricingTiers.map((tier) => (
           <div class={`relative bg-white border-2 rounded-3xl p-8 transition-all hover:shadow-xl ${tier.popular ? 'border-primary shadow-lg shadow-primary/10 scale-[1.02] lg:scale-105' : 'border-gray-200 hover:border-primary/30'}`}>
             {/* Popular badge */}
@@ -278,7 +292,7 @@ const pricingFaqs = [
               <td class="py-4 px-4 font-medium text-gray-700">Hourly Rate</td>
               <td class="py-4 px-4 text-center text-gray-500">$40 – $90</td>
               <td class="py-4 px-4 text-center text-gray-500">$30 – $80</td>
-              <td class="py-4 px-4 text-center font-bold text-primary bg-primary/5">$18 – $25</td>
+              <td class="py-4 px-4 text-center font-bold text-primary bg-primary/5">$15 – $25</td>
             </tr>
             <tr class="border-b border-gray-100">
               <td class="py-4 px-4 font-medium text-gray-700">Same Tutor Every Time</td>
