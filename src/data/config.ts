@@ -10,11 +10,11 @@ export const siteConfig = {
     // Currently pointing to test instance. 
     // Production: switch to app.expertguru.net (or chosen subdomain)
     app: {
-      baseUrl: '#contact-form', //'https://dgtutor.netlify.app',
-      login: '#contact-form', //'https://dgtutor.netlify.app/login',
-      register: '#contact-form', //'https://dgtutor.netlify.app/register',
-      bookDemo: '#contact-form', //'https://dgtutor.netlify.app/register',
-      parentPortal: '#contact-form', //'https://dgtutor.netlify.app/login',
+      baseUrl: 'https://app.expertguru.net', //'#contact-form',
+      login: 'https://app.expertguru.net/login', //'#contact-form',
+      register: 'https://app.expertguru.net/register', //'#contact-form',
+      bookDemo: 'https://app.expertguru.net/register', //'#contact-form',
+      parentPortal: 'https://app.expertguru.net/login', //'#contact-form',
     },
   
     social: {
